@@ -30,6 +30,7 @@ to the URL parameter OR
     
 to return a json of the query
 
+# URL
 A complete example is 
 
     http://yourdomain.com/hooks/write.php?form_id=1234&filter=Category,cs,Crew&limit=30&order=Category&format=sql
