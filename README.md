@@ -3,7 +3,7 @@ Takes the form_id for a specific form and generates an SQL query for that form. 
 
 # Instructions
 
-Drop this into your hooks folder
+Drop this into your **hooks** folder
 
 You'll then be able to access it via
 
