@@ -229,7 +229,7 @@
         //GENERATE CONDITION clause for fitering records
         if (isset($_GET['filter'])){
             
-            $filter_map = array('cs' => 'LIKE'); //map filter conditions to sql conditions
+            $filter_map = array('cs' => 'LIKE', 'eq' => '='); //map filter conditions to sql conditions
             
             $filters = explode(",", $_GET['filter']);
             $filtered_field = mf_sanitize(alpha_num($filters[0]));
@@ -246,6 +246,8 @@
                 $sql .= "\n\t{$filter_clause} `{$filtered_field}` {$filter_type} '%{$filter_value}%'";
                 
             }
+            else 
+                $sql .= "\n\t{$filter_clause} `{$filtered_field}` = '{$filter_value}'";
         }
         
         //GENERATE LIMIT clause 
