@@ -14,7 +14,17 @@ Other paramenters include
     entry_id: the id of an entry record
     order: what field to order by
     limit: what limit to set for the number of returned records
-    filter: format => KEY,OPERAND,VALUE e.g. Category,cs,Crew - cs is contains and is equivalent to LIKE
+    filter: format => KEY,OPERAND,VALUE e.g. &filter=Category,cs,Crew 
+    
+        KEY - The field you want filtered
+        
+        OPERANDS - The filter operation that is being applied
+        
+            cs - contain string (string contains value)
+            eq - equal (string or number matches exactly)
+        
+        VALUE - The value that is being filtered
+         
     format: can be query OR sql OR query
     
     http://yourdomain.com/hooks/write.php?form_id=1234&filter=Category,cs,Crew&limit=30&order=Category
