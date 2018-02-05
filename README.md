@@ -3,18 +3,26 @@ Takes the **form_id** for a specific form and generates an SQL query for that fo
 
 # Instructions
 
-Drop this into your **hooks** folder
+Add the following folder structure to the root folder for Machform
+
+- api
+-- sql
+
+drop the files in that folder
 
 You'll then be able to access it via
 
-    http://yourdomain.com/hooks/write.php?form_id=1234
+    http://yourdomain.com/api/sql/write.php?form_id=1234
 
 You will be prompted for a username and password (uses BASIC AUTH). The default username and password is:
 
 - **Username**: administrator
 - **Password**: $2y$10$CtIWOrkAUVuDL3qG5BbdWu1.F7ExDy9RjdyNiY21YcjOZS.o.dw5i
 
-Make sure to change the default password. The password is in the init.php file.
+Make sure to change the default password. The password is located at 
+
+    ./api/sql/init.php
+
 
 # Parameters
 

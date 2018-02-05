@@ -1,7 +1,7 @@
 <?php 
 
     //Configuration Settings
-    define("BASE_PATH", "../"); //Relative path to Machform root folder
+    define("BASE_PATH", "../../"); //Relative path to Machform root folder
 	define("AUTH_USER",'administrator'); //BASIC AUTH Username
 	define("AUTH_PASS", '$2y$10$CtIWOrkAUVuDL3qG5BbdWu1.F7ExDy9RjdyNiY21YcjOZS.o.dw5i'); //BASIC AUTH Password
 

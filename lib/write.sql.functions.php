@@ -231,13 +231,13 @@
             
             $filter_map = array(
                 'cs' => 'LIKE',
-                'sw' = 'LIKE',
-                'ew' = 'LIKE',
+                'sw' => 'LIKE',
+                'ew' => 'LIKE',
                 'eq' => '=', 
                 'lt' => '<', 
                 'gt' => '>', 
-                'le' = '<=', 
-                'ge' = '>='
+                'le' => '<=', 
+                'ge' => '>='
             ); //map filter conditions to sql conditions
             
             $filters        = explode(",", $_GET['filter']);
@@ -344,7 +344,7 @@
 			else if('select' == $element_type){ 
 				$fields[$i] = get_option_id($element_id, $element_title);
 			}
-            else if('page_break' == $element_type){
+            else if('page_break' == $element_type || 'section' == $element_type){
             }
 			else { 
 				$fields[$i] = element(). $element_id . alias($element_title,0);
@@ -390,7 +390,7 @@
 	
     // Returns an Alias based on the elements title	
 	function alias($element_title,$id){
-		$element_title = alpha_num(str_replace(' ', '_', $element_title));
+		$element_title = str_replace(' ', '_', $element_title);
 		if($id) $element_title = $element_title . '_ID';
 		return ' AS `' . $element_title . '` ';	
 	}
