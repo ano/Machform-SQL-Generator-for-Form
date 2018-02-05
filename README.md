@@ -31,6 +31,12 @@ Other paramenters include
 
         cs - contain string (string contains value)
         eq - equal (string or number matches exactly)
+        ew - end with (string end with value)
+        eq - equal (string or number matches exactly)
+        lt - lower than (number is lower than value)
+        le - lower or equal (number is lower than or equal to value)
+        ge - greater or equal (number is higher than or equal to value)
+        gt - greater than (number is higher than value)
 
     **VALUE**: The value that is being filtered
 
