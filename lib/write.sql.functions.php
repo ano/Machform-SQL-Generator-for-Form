@@ -229,13 +229,22 @@
         //GENERATE CONDITION clause for fitering records
         if (isset($_GET['filter'])){
             
-            $filter_map = array('cs' => 'LIKE', 'eq' => '='); //map filter conditions to sql conditions
+            $filter_map = array(
+                'cs' => 'LIKE',
+                'sw' = 'LIKE',
+                'ew' = 'LIKE',
+                'eq' => '=', 
+                'lt' => '<', 
+                'gt' => '>', 
+                'le' = '<=', 
+                'ge' = '>='
+            ); //map filter conditions to sql conditions
             
-            $filters = explode(",", $_GET['filter']);
+            $filters        = explode(",", $_GET['filter']);
             $filtered_field = mf_sanitize(alpha_num($filters[0]));
-            $condition = mf_sanitize(alpha_num($filters[1]));
-            $filter_type = $filter_map[$condition];
-            $filter_value = mf_sanitize(alpha_num($filters[2]));
+            $condition      = mf_sanitize(alpha_num($filters[1]));
+            $filter_operand = $filter_map[$condition];
+            $filter_value   = mf_sanitize(alpha_num($filters[2]));
             
             //if entry_id is set use an AND clause
             $filter_clause = (isset($_GET['entry_id'])) ? "\n\tAND " : "\n\tHAVING";
@@ -243,11 +252,21 @@
             //BUILD the condition
             if($condition === "cs"){ // contains string = LIKE                
                
-                $sql .= "\n\t{$filter_clause} `{$filtered_field}` {$filter_type} '%{$filter_value}%'";
+                $sql .= "\n\t{$filter_clause} `{$filtered_field}` {$filter_operand} '%{$filter_value}%'";
+                
+            }
+            else if($condition === "sw"){ // starts with               
+               
+                $sql .= "\n\t{$filter_clause} `{$filtered_field}` {$filter_operand} '{$filter_value}%'";
+                
+            }
+            else if($condition === "ew"){ // ends with                
+               
+                $sql .= "\n\t{$filter_clause} `{$filtered_field}` {$filter_operand} '%{$filter_value}'";
                 
             }
             else 
-                $sql .= "\n\t{$filter_clause} `{$filtered_field}` = '{$filter_value}'";
+                $sql .= "\n\t{$filter_clause} `{$filtered_field}` {$filter_operand}  '{$filter_value}'";
         }
         
         //GENERATE LIMIT clause 
